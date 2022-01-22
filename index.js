@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", async () => {
   const timeFrames = document.querySelector(".time-period");
   const data = await fetchData();
-  loadActivitiesCards(data, "weekly");
+  // loadActivitiesCards(data, "weekly");
   timeFrames.addEventListener("click", (e) => {
     e.preventDefault();
     const element = e.target;
@@ -10,10 +10,10 @@ document.addEventListener("DOMContentLoaded", async () => {
       loadActivitiesCards(data, e.target.id);
     } else if (element.id === "weekly") {
       addRemoveActiveStatus(e.target.parentNode, element);
-      loadActivitiesCards(data, e.target.id);
+      // loadActivitiesCards(data, e.target.id);
     } else if (element.id === "monthly") {
       addRemoveActiveStatus(e.target.parentNode, element);
-      loadActivitiesCards(data, e.target.id);
+      // loadActivitiesCards(data, e.target.id);
     }
   });
 });
