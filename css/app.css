@@ -114,12 +114,13 @@ p {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  margin-right: 1rem;
 }
 .activity-banner img {
-  width: 90px;
-  height: 100px;
-  margin-right: 1rem;
-  margin-top: 1.5rem;
+  width: 48px;
+  height: 60px;
+  margin-right: 0rem;
+  margin-top: 0.6rem;
 }
 .report {
   width: 100%;
@@ -135,19 +136,21 @@ p {
   background-color: var(--Dark-blue);
 }
 .report div {
-  margin-top: 1.6rem;
+  margin-top: -0.4rem;
 }
 .activity-options {
   display: flex;
   justify-content: space-between;
+  margin: 0 2.5rem;
 }
 .activity-options img {
   margin-top: 0.5rem;
   max-width: 1rem;
-  height: 0.4rem;
+  height: 0.2rem;
 }
 .hours {
   font-size: 1.8rem;
+  font-weight: var(--light);
 }
 .activity {
   font-size: 1.2rem;
@@ -160,10 +163,11 @@ p {
   flex-direction: row-reverse;
   align-items: center;
   justify-content: space-between;
+  margin: 0 2.5rem;
 }
 
 .previus {
-  margin-top: 1.6rem;
+  margin-top: 0.6rem;
   color: var(--Pale-Blue);
 }
 
@@ -177,12 +181,14 @@ p {
     display: flex;
     flex-direction: column-reverse;
     align-items: flex-start;
+    margin: 0;
   }
 
   .activity-options {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
+    margin: 0;
   }
   /* .activity-options img {
     margin-top: 0.5rem;
@@ -250,11 +256,11 @@ p {
   }
   .activity-card {
     margin-top: 0;
-    background-color: var(--Light-red-work);
   }
   .activity-banner,
   .report {
     padding: 1rem;
+    margin-right: 0;
   }
   .report {
     height: 9rem;
@@ -274,6 +280,10 @@ p {
     font-size: 1rem;
   }
   .hours {
-    font-size: 1.4rem;
+    font-size: 2.2rem;
+  }
+  .previus {
+    margin-top: 0.6rem;
+    font-size: 0.7rem;
   }
 }
