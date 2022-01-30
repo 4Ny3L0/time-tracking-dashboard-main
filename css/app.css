@@ -107,6 +107,10 @@ p {
   margin-top: 2rem;
   position: relative;
 }
+.report:hover {
+  filter: brightness(1.4);
+  cursor: pointer;
+}
 .activity-banner {
   height: 2.5rem;
   border-radius: 1rem;
@@ -190,12 +194,6 @@ p {
     flex-direction: row;
     margin: 0;
   }
-  /* .activity-options img {
-    margin-top: 0.5rem;
-   
-    max-width: 1rem;
-    height: 0.4rem;
-  } */
 }
 
 /**/
@@ -224,7 +222,9 @@ p {
 @media (min-width: 800px) {
   .container {
     display: grid;
+    display: -ms-grid;
     grid-template-columns: repeat(4, 1fr);
+    -ms-grid-columns: repeat(4, 1fr);
     column-gap: 2rem;
     row-gap: 2rem;
   }
