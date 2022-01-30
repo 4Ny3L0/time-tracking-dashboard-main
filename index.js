@@ -1,24 +1,29 @@
 document.addEventListener("DOMContentLoaded", async () => {
   const timeFrames = document.querySelector(".time-period");
   const data = await fetchData();
-  loadActivitiesCards(data, "weekly", "week");
+  loadActivitiesCards(data, "weekly");
   timeFrames.addEventListener("click", (e) => {
     e.preventDefault();
     const element = e.target;
     if (element.id === "daily") {
       addRemoveActiveStatus(e.target.parentNode, element);
-      loadActivitiesCards(data, e.target.id, "day");
+      loadActivitiesCards(data, e.target.id);
     } else if (element.id === "weekly") {
       addRemoveActiveStatus(e.target.parentNode, element);
-      loadActivitiesCards(data, e.target.id, "week");
+      loadActivitiesCards(data, e.target.id);
     } else if (element.id === "monthly") {
       addRemoveActiveStatus(e.target.parentNode, element);
-      loadActivitiesCards(data, e.target.id, "month");
+      loadActivitiesCards(data, e.target.id);
     }
   });
 });
-
-function loadActivitiesCards(data, timeFrame, time) {
+//make all HTML cards and append this to the main container
+function loadActivitiesCards(data, timeFrame) {
+  const times = {
+    daily: "day",
+    weekly: "week",
+    monthly: "month",
+  };
   const mainContainer = document.querySelector(".container");
   data.forEach((info) => {
     const { title, timeframes } = info;
@@ -52,7 +57,7 @@ function loadActivitiesCards(data, timeFrame, time) {
 
     previusOptions.src = "./images/icon-ellipsis.svg";
     previusTime.classList.add("previus");
-    previusTime.textContent = `Last ${time} - ${timeframes[timeFrame].previous}hrs`;
+    previusTime.textContent = `Last ${times[timeFrame]} - ${timeframes[timeFrame].previous}hrs`;
     //append
     optionsDiv.appendChild(activityP);
     optionsDiv.appendChild(previusOptions);
@@ -66,13 +71,13 @@ function loadActivitiesCards(data, timeFrame, time) {
     mainContainer.appendChild(section);
   });
 }
-
+//fetching the data
 async function fetchData() {
   const data = await fetch("./data.json");
   const info = await data.json();
   return info;
 }
-
+//add the url to image and add the color to the background and return a object
 function activityBannerConfig(activity) {
   const activityBannerConfigObj = {
     background: "",
@@ -108,9 +113,10 @@ function activityBannerConfig(activity) {
   }
   return activityBannerConfigObj;
 }
+//Adding / removing the active class in the category selected
 function addRemoveActiveStatus(parent, elementSelected) {
   const childrens = parent.children;
-  limpiarHTML();
+  cleanHTML();
   for (let i = 0; i < childrens.length; ++i) {
     if (childrens[i].id == elementSelected.id) {
       childrens[i].classList.add("active");
@@ -119,7 +125,8 @@ function addRemoveActiveStatus(parent, elementSelected) {
     }
   }
 }
-function limpiarHTML() {
+//Clean the list to insert new data
+function cleanHTML() {
   const mainContainer = document.querySelector(".container");
   while (mainContainer.children[1]) {
     mainContainer.children[1].remove();
