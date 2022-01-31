@@ -28,7 +28,7 @@ function loadActivitiesCards(data, timeFrame) {
   data.forEach((info) => {
     const { title, timeframes } = info;
     const activityStyle = activityBannerConfig(title);
-    const section = document.createElement("section");
+    const divSection = document.createElement("div");
     const activityBanner = document.createElement("div");
     const activityImg = document.createElement("img");
     /*report*/
@@ -43,9 +43,10 @@ function loadActivitiesCards(data, timeFrame) {
     const previusTime = document.createElement("P");
     // time info fin
 
-    section.classList.add("activity-card", activityStyle.background);
+    divSection.classList.add("activity-card", activityStyle.background);
     activityBanner.classList.add("activity-banner");
     activityImg.src = activityStyle.activityImg;
+    activityImg.alt = `a image of the activity ${title}`;
     activityBanner.appendChild(activityImg);
     reportDiv.classList.add("report");
     optionsDiv.classList.add("activity-options");
@@ -56,6 +57,7 @@ function loadActivitiesCards(data, timeFrame) {
     activityHours.textContent = `${timeframes[timeFrame].current}hrs`;
 
     previusOptions.src = "./images/icon-ellipsis.svg";
+    previusOptions.alt = "three dots image to deploy options";
     previusTime.classList.add("previus");
     previusTime.textContent = `Last ${times[timeFrame]} - ${timeframes[timeFrame].previous}hrs`;
     //append
@@ -66,9 +68,9 @@ function loadActivitiesCards(data, timeFrame) {
 
     reportDiv.appendChild(optionsDiv);
     reportDiv.appendChild(timeInfoContainer);
-    section.appendChild(activityBanner);
-    section.appendChild(reportDiv);
-    mainContainer.appendChild(section);
+    divSection.appendChild(activityBanner);
+    divSection.appendChild(reportDiv);
+    mainContainer.appendChild(divSection);
   });
 }
 //fetching the data
